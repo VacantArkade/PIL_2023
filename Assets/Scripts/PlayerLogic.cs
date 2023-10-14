@@ -113,9 +113,14 @@ public class PlayerLogic : MonoBehaviour
         hInput = amount;
 
         if (hInput < 0)
+        {
             GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
         else if (hInput > 0)
+        {
             GetComponentInChildren<SpriteRenderer>().flipX = false;
+        }
+
         Debug.Log(amount);
     }
 }
