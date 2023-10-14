@@ -48,7 +48,7 @@ public class PlayerLogic : MonoBehaviour
     void Update()
     {
         animator.SetBool("grounded", grounded);
-        animator.SetFloat("speed", rb.velocity.x);
+        animator.SetFloat("speed", Mathf.Abs(hInput));
     }
 
     private void FixedUpdate()
@@ -111,6 +111,11 @@ public class PlayerLogic : MonoBehaviour
     {
         var amount = ctx.ReadValue<float>();
         hInput = amount;
+
+        if (hInput < 0)
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+        else if (hInput > 0)
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
         Debug.Log(amount);
     }
 }
