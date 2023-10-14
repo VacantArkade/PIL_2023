@@ -78,7 +78,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 3670883616652239796}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5d3681110b140bd4e9c7466fbe49a45c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -525092567, guid: 5fd9cb48623c55943a68b0a4e09d9d89, type: 3}
+  m_Sprite: {fileID: -296466156, guid: 5fd9cb48623c55943a68b0a4e09d9d89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
