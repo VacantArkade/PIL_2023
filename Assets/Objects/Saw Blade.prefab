@@ -101,7 +101,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 0}
-  rotSpeed: 750
   child: {fileID: 5980491419501249346}
 --- !u!58 &2705063616808836979
 CircleCollider2D:
@@ -150,6 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5980491419501249346}
   - component: {fileID: 1805302492453355368}
+  - component: {fileID: 3107030951592667168}
   m_Layer: 0
   m_Name: Saw Blade
   m_TagString: Untagged
@@ -224,3 +224,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3107030951592667168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686033342254264404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 806eda883e4dc79419c45f277a307546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 500

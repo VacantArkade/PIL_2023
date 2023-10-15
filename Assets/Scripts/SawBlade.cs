@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SawBlade : InteractableObject
 {
-    public new float rotSpeed = 0;
+   // public new float rotSpeed = 0;
     public Transform child;
     // Start is called before the first frame update
     protected override void Start()
@@ -16,6 +16,6 @@ public class SawBlade : InteractableObject
     protected override void Update()
     {
         base.Update();
-        child.Rotate(Vector3.forward, rotSpeed * Time.deltaTime);
+        //child.Rotate(Vector3.forward, rotSpeed * Time.deltaTime);
     }
 }

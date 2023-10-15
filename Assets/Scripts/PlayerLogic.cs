@@ -48,7 +48,7 @@ public class PlayerLogic : MonoBehaviour
     void Update()
     {
         animator.SetBool("grounded", grounded);
-        animator.SetFloat("speed", rb.velocity.x);
+        animator.SetFloat("speed", rb.velocity.x * Mathf.Abs(hInput));
     }
 
     private void FixedUpdate()

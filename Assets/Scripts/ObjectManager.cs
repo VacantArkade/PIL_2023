@@ -163,7 +163,12 @@ public class ObjectManager : MonoBehaviour
         
         InteractableObject i = Instantiate(objectList[objectIndex], pos, Quaternion.identity) ;
         if (nextParent != null)
+        {
             i.transform.parent = nextParent;
+            Vector2 updated_pos = i.transform.position;
+            updated_pos.x = nextParent.transform.position.x;
+            i.transform.position = updated_pos;
+        }
         remainingItems[objectList[objectIndex]]--;
 
         UpdateCount();
@@ -338,6 +343,6 @@ public class ObjectManager : MonoBehaviour
 
     void UsedAllItems()
     {
-
+        FindObjectOfType<Key>().Activate();
     }
 }
