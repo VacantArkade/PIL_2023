@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 6869997587491940572}
   - component: {fileID: 6169422808696655219}
   - component: {fileID: 5990814782992224566}
+  - component: {fileID: 3799446836397584561}
   m_Layer: 0
   m_Name: Keyhole
   m_TagString: Untagged
@@ -470,6 +471,22 @@ MonoBehaviour:
   deactivatedColor: {r: 1, g: 1, b: 1, a: 0.21960784}
   activatedColor: {r: 1, g: 1, b: 1, a: 1}
   shine: {fileID: 798361429359211597}
+--- !u!58 &3799446836397584561
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2434426331890650749}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.76
 --- !u!1 &7182321974123452137
 GameObject:
   m_ObjectHideFlags: 0

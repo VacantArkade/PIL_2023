@@ -42,6 +42,8 @@ public class Lock : MonoBehaviour
         if(activated)
         {
             //gameObject.SetActive(false);
+            //GameManager.instance.NextLevel();
+            StartCoroutine(GameManager.instance.NextLevel());
         }
 
     }
