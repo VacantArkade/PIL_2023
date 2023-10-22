@@ -49,4 +49,22 @@ public class GameManager : MonoBehaviour
 
         scene.allowSceneActivation = true;
     }
+
+    public IEnumerator RestartLevel()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        var fade = FindObjectOfType<FadeCanvas>();
+
+        fade.SetDesiredAlpha(1);
+
+        //while (fade.Fading)
+        {
+            //Debug.Log("fading");
+            yield return new WaitForSeconds(2f);
+        }
+
+        Debug.Log("restarting");
+        //scene.allowSceneActivation = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

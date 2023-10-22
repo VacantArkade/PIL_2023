@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsForThisLevel:
   - {fileID: -2412227297588199657, guid: 01536bfeecbeead44939ccb6cf913ae7, type: 3}
+  - {fileID: -3045931404105176062, guid: 59964ef3fab256b40993eff2326bb51c, type: 3}
   allObjects:
   - {fileID: -2412227297588199657, guid: 01536bfeecbeead44939ccb6cf913ae7, type: 3}
   - {fileID: -3045931404105176062, guid: 59964ef3fab256b40993eff2326bb51c, type: 3}
@@ -3558,8 +3559,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -863.23737, y: 6.9825}
-  m_SizeDelta: {x: 87.8133, y: 957.4011}
+  m_AnchoredPosition: {x: -863.23737, y: 3.3574219}
+  m_SizeDelta: {x: 87.8133, y: 130.865}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1928306409
 MonoBehaviour:
@@ -3583,7 +3584,7 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0

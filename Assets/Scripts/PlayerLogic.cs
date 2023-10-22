@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+
 public class PlayerLogic : MonoBehaviour
 {
     [SerializeField]
@@ -27,6 +29,15 @@ public class PlayerLogic : MonoBehaviour
 
     float hInput = 0;
 
+    public enum PlayerStates // not complex enough to be worth a whole state system
+    {
+        normal,
+        dead,
+        goal
+    }
+
+    PlayerStates state = PlayerStates.normal;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,22 +58,19 @@ public class PlayerLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("speed", rb.velocity.x * Mathf.Abs(hInput));
+        if (state == PlayerStates.normal)
+        {
+            animator.SetBool("grounded", grounded);
+            animator.SetFloat("speed", rb.velocity.x * Mathf.Abs(hInput));
+        }
     }
 
     private void FixedUpdate()
     {
+        if (state != PlayerStates.normal)
+            return;
+
         Vector2 additional_velocity = Vector2.zero;
-        /*var hit = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundMask);
-        if (hit)
-        {
-            grounded = true;
-        }
-        else
-        {
-            grounded = false;
-        }*/
 
         grounded = false;
         GetComponent<Collider2D>().sharedMaterial.friction = 0;
@@ -112,5 +120,28 @@ public class PlayerLogic : MonoBehaviour
         var amount = ctx.ReadValue<float>();
         hInput = amount;
         Debug.Log(amount);
+    }
+
+    public void DeathByLaser()
+    {
+        Death();
+    }
+
+    public void DeathBySaw()
+    {
+        Death();
+    }
+
+    public void DeathByCrushed()
+    {
+        Death();
+    }
+
+    public void Death()
+    {
+        rb.velocity = Vector2.zero;
+        state = PlayerStates.dead;
+        StartCoroutine(GameManager.instance.RestartLevel());
+        //gameObject.SetActive(false);
     }
 }

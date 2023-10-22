@@ -114,7 +114,7 @@ public class ObjectManager : MonoBehaviour
 
         var num = (int)Mathf.Sign(v);
 
-        Debug.Log(num);
+        //Debug.Log(num);
 
         objectIndex += num;
         

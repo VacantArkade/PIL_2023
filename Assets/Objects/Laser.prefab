@@ -233,4 +233,4 @@ MonoBehaviour:
   line: {fileID: 6162435155350565146}
   mask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72

@@ -26,8 +26,15 @@ public class Laser : InteractableObject
         var endPoint = line.transform.position + line.transform.up * -100;
 
         if (hit)
+        {
             endPoint = hit.point;
-
+            var player = hit.transform.gameObject.GetComponent<PlayerLogic>();
+            if (player != null)
+            {
+                Debug.Log("HIT PLAYER");
+                player.DeathByLaser();
+            }
+        }
 
         line.SetPosition(1, endPoint);
         
