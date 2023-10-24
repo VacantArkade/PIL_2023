@@ -10,6 +10,9 @@ public class Laser : InteractableObject
     [SerializeField]
     LayerMask mask;
 
+    [SerializeField]
+    GameObject particles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +40,7 @@ public class Laser : InteractableObject
         }
 
         line.SetPosition(1, endPoint);
+        particles.transform.position = endPoint;
         
     }
 }

@@ -29,6 +29,9 @@ public class PlayerLogic : MonoBehaviour
 
     float hInput = 0;
 
+    [SerializeField]
+    GameObject playerPieces;
+
     public enum PlayerStates // not complex enough to be worth a whole state system
     {
         normal,
@@ -139,9 +142,14 @@ public class PlayerLogic : MonoBehaviour
 
     public void Death()
     {
+        if (state == PlayerStates.dead)
+            return;
+
         rb.velocity = Vector2.zero;
         state = PlayerStates.dead;
-        StartCoroutine(GameManager.instance.RestartLevel());
+        GameManager.instance.ResetLevel();
+        Instantiate(playerPieces, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
         //gameObject.SetActive(false);
     }
 }

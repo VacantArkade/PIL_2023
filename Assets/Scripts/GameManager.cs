@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void ResetLevel()
+    {
+        StartCoroutine(RestartLevel());
+    }
+
     public void PrepNextLevel()
     {
         int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
@@ -50,7 +55,7 @@ public class GameManager : MonoBehaviour
         scene.allowSceneActivation = true;
     }
 
-    public IEnumerator RestartLevel()
+    IEnumerator RestartLevel()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         var fade = FindObjectOfType<FadeCanvas>();
