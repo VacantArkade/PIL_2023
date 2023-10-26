@@ -18,6 +18,8 @@ public class PlayerLogic : MonoBehaviour
     bool grounded = false;
     [SerializeField]
     Animator animator;
+    [SerializeField]
+    Animator shaker;
 
     Rigidbody2D rb;
     [SerializeField]
@@ -31,6 +33,11 @@ public class PlayerLogic : MonoBehaviour
 
     [SerializeField]
     GameObject playerPieces;
+
+    [SerializeField]
+    ParticleSystem dustTrail;
+
+    bool prev_grounded = false;
 
     public enum PlayerStates // not complex enough to be worth a whole state system
     {
@@ -66,6 +73,27 @@ public class PlayerLogic : MonoBehaviour
             animator.SetBool("grounded", grounded);
             animator.SetFloat("speed", rb.velocity.x * Mathf.Abs(hInput));
         }
+
+        if(grounded && !prev_grounded)
+        {
+            animator.SetTrigger("land");
+            dustTrail.Play();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        prev_grounded = grounded;
+    }
+
+    private void OnDisable()
+    {
+        jumpAction.performed -= Jump_performed;
+        jumpAction.canceled -= Jump_cancelled;
+        jumpAction.started -= Jump_started;
+
+        moveAction.performed -= Move;
+        moveAction.canceled -= Move;
     }
 
     private void FixedUpdate()
@@ -94,19 +122,29 @@ public class PlayerLogic : MonoBehaviour
         }
 
         rb.velocity = new Vector2(hInput *  speed, rb.velocity.y) + additional_velocity;
+
+        if (!grounded && dustTrail.isPlaying)
+            dustTrail.Stop();
     }
 
     void Jump_performed(InputAction.CallbackContext ctx)
     {
+        if (rb == null)
+            return;
+
         if (!grounded)
             return;
 
         //rb.AddForce(Vector2.up * jumpForce);
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        animator.SetTrigger("jump");
     }
 
     void Jump_cancelled(InputAction.CallbackContext ctx)
     {
+        if (rb == null)
+            return;
+
         if (rb.velocity.y <= 0)
             return;
 
@@ -145,11 +183,34 @@ public class PlayerLogic : MonoBehaviour
         if (state == PlayerStates.dead)
             return;
 
-        rb.velocity = Vector2.zero;
-        state = PlayerStates.dead;
-        GameManager.instance.ResetLevel();
-        Instantiate(playerPieces, transform.position, Quaternion.identity);
-        gameObject.SetActive(false);
+
+
+        StartCoroutine(HandleDeathAnimations());
+
+        
         //gameObject.SetActive(false);
+    }
+
+    IEnumerator HandleDeathAnimations()
+    {
+        state = PlayerStates.dead;
+        shaker.SetTrigger("shake");
+        var vel = rb.velocity;
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0;
+
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject p = Instantiate(Resources.Load("Pop") as GameObject);
+        p.transform.position = transform.position;
+
+        GameManager.instance.ResetLevel();
+        var g = Instantiate(playerPieces, transform.position, Quaternion.identity);
+
+        foreach (Rigidbody2D r2d in g.GetComponentsInChildren<Rigidbody2D>())
+            r2d.velocity = -1 * vel;
+
+        
+        gameObject.SetActive(false);
     }
 }

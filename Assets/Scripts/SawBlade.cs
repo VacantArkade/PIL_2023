@@ -18,4 +18,14 @@ public class SawBlade : InteractableObject
         base.Update();
         //child.Rotate(Vector3.forward, rotSpeed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var player = collision.transform.gameObject.GetComponent<PlayerLogic>();
+        if (player != null)
+        {
+            Debug.Log("HIT PLAYER");
+            player.DeathBySaw();
+        }
+    }
 }

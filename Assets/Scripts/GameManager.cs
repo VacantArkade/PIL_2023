@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -25,6 +27,11 @@ public class GameManager : MonoBehaviour
     public void ResetLevel()
     {
         StartCoroutine(RestartLevel());
+    }
+
+    public void BackToMenu()
+    {
+
     }
 
     public void PrepNextLevel()

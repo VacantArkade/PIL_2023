@@ -13,6 +13,15 @@ public class Laser : InteractableObject
     [SerializeField]
     GameObject particles;
 
+    [SerializeField]
+    int points = 5;
+
+    [SerializeField]
+    float amplitude = 1;
+
+    [SerializeField]
+    float waveSpeed = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +48,31 @@ public class Laser : InteractableObject
             }
         }
 
-        line.SetPosition(1, endPoint);
+        //line.SetPosition(1, endPoint);
+
+        Draw(endPoint);
+
         particles.transform.position = endPoint;
         
+    }
+
+    void Draw(Vector3 endPoint)
+    {
+        float start = transform.position.y;
+        float finish = endPoint.y;
+
+        //line.SetPosition(0, transform.position);
+
+        line.positionCount = points + 1;
+        for (int currentPoint = 1; currentPoint < points; currentPoint++)
+        {
+            float progress = (float)currentPoint / (points - 1);
+            float y = Mathf.Lerp(start, finish, progress);
+            float x = amplitude * Mathf.Sin(y + (Time.timeSinceLevelLoad * waveSpeed));
+            line.SetPosition(currentPoint, new Vector3(transform.position.x + x, y, 0));
+        }
+
+        //line.SetPosition(0, transform.position);
+        line.SetPosition(line.positionCount - 1, endPoint);
     }
 }

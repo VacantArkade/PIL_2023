@@ -275,10 +275,10 @@ TextureImporter:
       name: character_8
       rect:
         serializedVersion: 2
-        x: 583
+        x: 597
         y: 777
-        width: 268
-        height: 135
+        width: 232
+        height: 221
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

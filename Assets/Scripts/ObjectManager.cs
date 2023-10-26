@@ -94,6 +94,11 @@ public class ObjectManager : MonoBehaviour
 
         preview.color = validColor;
     }
+    private void OnDisable()
+    {
+        scrollAction.performed -= Scroll;
+        spawnAction.performed -= AttemptSpawnItem;
+    }
 
     public Sprite GetCurrentObjectSprite()
     {
@@ -130,7 +135,10 @@ public class ObjectManager : MonoBehaviour
 
     void UpdatePreview()
     {
-        preview.sprite = objectList[objectIndex].GetComponentInChildren<SpriteRenderer>().sprite;
+        if (preview == null)
+            return;
+
+        preview.sprite = objectList[objectIndex].GetComponentInChildren<SpriteRenderer>()?.sprite;
     }
 
     void UpdateCount()
@@ -176,6 +184,9 @@ public class ObjectManager : MonoBehaviour
 
     bool CanSpawn()
     {
+        if (preview == null)
+            return false;
+
         nextParent = null;
 
         if(remainingItems[objectList[objectIndex]] <= 0)
@@ -194,6 +205,8 @@ public class ObjectManager : MonoBehaviour
 
         if(obj_name.Contains("Saw"))
         {
+            
+
             if (OverlappingGround())
                 return false;
 
@@ -288,6 +301,9 @@ public class ObjectManager : MonoBehaviour
 
     GameObject OverlappingGround()
     {
+        if (preview == null)
+            return null;
+
         var coll = preview.GetComponent<BoxCollider2D>();
         List<Collider2D> colliders = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
