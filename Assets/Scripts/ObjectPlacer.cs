@@ -22,6 +22,9 @@ public class ObjectPlacer : MonoBehaviour, IObserver
     // Update is called once per frame
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         var mousePos = Mouse.current.position.ReadValue();
         var changed = Camera.main.ScreenToWorldPoint(mousePos);
         changed.z = 0;

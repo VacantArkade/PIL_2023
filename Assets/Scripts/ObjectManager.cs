@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ObjectManager : MonoBehaviour
 {
@@ -185,6 +186,9 @@ public class ObjectManager : MonoBehaviour
     bool CanSpawn()
     {
         if (preview == null)
+            return false;
+
+        if (EventSystem.current.IsPointerOverGameObject())
             return false;
 
         nextParent = null;
