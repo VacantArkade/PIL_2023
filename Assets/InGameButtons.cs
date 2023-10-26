@@ -58,6 +58,11 @@ public class InGameButtons : MonoBehaviour
         holdRestart = false;
     }
 
+    public void OpenSettings()
+    {
+        GameManager.instance.OpenSettingsMenu();
+    }
+
     // Update is called once per frame
     void Update()
     {

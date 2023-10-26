@@ -37,6 +37,9 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField]
     ParticleSystem dustTrail;
 
+    [SerializeField]
+    GameObject jumpSound;
+
     bool prev_grounded = false;
 
     public enum PlayerStates // not complex enough to be worth a whole state system
@@ -134,6 +137,9 @@ public class PlayerLogic : MonoBehaviour
 
         if (!grounded)
             return;
+
+        GameObject sound = Instantiate(jumpSound);
+        Destroy(sound, 1.5f);
 
         //rb.AddForce(Vector2.up * jumpForce);
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);

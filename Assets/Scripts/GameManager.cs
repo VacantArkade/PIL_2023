@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameObject settingsMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OpenSettingsMenu()
+    {
+        /*var existingMenu = FindObjectOfType<SettingsMenu>();
+        if (existingMenu != null)
+        {
+            existingMenu.gameObject.SetActive(true);
+            return;
+        }*/
+            
+        Instantiate(settingsMenu);
     }
 
     public void ResetLevel()

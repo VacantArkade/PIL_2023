@@ -22,6 +22,9 @@ public class Laser : InteractableObject
     [SerializeField]
     float waveSpeed = 1;
 
+    [SerializeField]
+    AudioSource laserAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,11 +49,20 @@ public class Laser : InteractableObject
                 Debug.Log("HIT PLAYER");
                 player.DeathByLaser();
             }
+
+            laserAudio.transform.position = endPoint;
+        }
+
+        else
+        {
+            laserAudio.transform.position = transform.position + Vector3.down * 2;
         }
 
         //line.SetPosition(1, endPoint);
 
         Draw(endPoint);
+
+        
 
         particles.transform.position = endPoint;
         

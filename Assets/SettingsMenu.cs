@@ -25,7 +25,8 @@ public class SettingsMenu : MonoBehaviour
 
     public void DismissMenu()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void OnEnable()
@@ -33,7 +34,7 @@ public class SettingsMenu : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         Time.timeScale = 1;
     }
