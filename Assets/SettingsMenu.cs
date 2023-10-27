@@ -53,5 +53,7 @@ public class SettingsMenu : MonoBehaviour
         bool isFullscreen = windowType.value == 1;
 
         Screen.SetResolution(int.Parse(width), int.Parse(height), isFullscreen);
+
+        FindObjectOfType<CameraFixer>()?.FixScreen();
     }
 }

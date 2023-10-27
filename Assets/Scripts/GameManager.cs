@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject settingsMenu;
 
+    public float volumeSFX = 1.0f;
+    public float volumeBGM = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,7 +72,7 @@ public class GameManager : MonoBehaviour
         while(fade.Fading)
         {
             //Debug.Log("fading");
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
 
         scene.allowSceneActivation = true;
@@ -91,5 +94,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("restarting");
         //scene.allowSceneActivation = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoToNextLevel()
+    {
+        int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextLevelIndex = currentLevelIndex + 1;
+        SceneManager.LoadScene(nextLevelIndex);
     }
 }
