@@ -10,7 +10,6 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     List<InteractableObject> objectsForThisLevel;
 
-    public List<InteractableObject> allObjects;
 
     List<InteractableObject> objectList;
     Dictionary<InteractableObject, int> remainingItems;

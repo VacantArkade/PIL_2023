@@ -68,12 +68,12 @@ public class InGameButtons : MonoBehaviour
     {
         if(holdRestart)
             restartButton.progress += buttonHoldSpeed * Time.deltaTime;
-        else if(restartButton.progress > 0)
+        else if(restartButton.progress > 0 && !restartButton.clicked)
             restartButton.progress -= buttonHoldSpeed * 2 * Time.deltaTime;
 
         if (holdQuit)
             quitButton.progress += buttonHoldSpeed * Time.deltaTime;
-        else if (quitButton.progress > 0)
+        else if (quitButton.progress > 0 && !quitButton.clicked)
             quitButton.progress -= buttonHoldSpeed * 2 * Time.deltaTime;
     }
 }

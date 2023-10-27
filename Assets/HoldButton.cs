@@ -8,7 +8,7 @@ public class HoldButton : MonoBehaviour
     public float progress;
     public Image bar;
 
-    bool clicked = false;
+    public bool clicked = false;
 
     // Start is called before the first frame update
     void Start()
