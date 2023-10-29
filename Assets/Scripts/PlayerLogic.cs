@@ -40,6 +40,9 @@ public class PlayerLogic : MonoBehaviour
     [SerializeField]
     GameObject jumpSound;
 
+    [SerializeField]
+    Transform killLine;
+
     bool prev_grounded = false;
 
     public enum PlayerStates // not complex enough to be worth a whole state system
@@ -82,6 +85,9 @@ public class PlayerLogic : MonoBehaviour
             animator.SetTrigger("land");
             dustTrail.Play();
         }
+
+        if (transform.position.y < killLine.position.y)
+            Death();
     }
 
     private void LateUpdate()

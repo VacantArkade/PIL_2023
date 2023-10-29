@@ -1747,7 +1747,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 7997203039020227916, guid: 1f3bfde4ae08cb1459882450c853ff78, type: 3}
   volumeSFX: 1
   volumeBGM: 1
-  mixer: {fileID: 0}
+  mixer: {fileID: 24100000, guid: 6a7a2c0f34d6eba47bbefd35d7cc7a9e, type: 2}
 --- !u!4 &1432761600
 Transform:
   m_ObjectHideFlags: 0
@@ -3022,6 +3022,14 @@ PrefabInstance:
     - target: {fileID: 1600614591137239182, guid: 5a9287d6c2c72574fac354e873c18c42, type: 3}
       propertyPath: objectsForThisLevel.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213460577086360339, guid: 5a9287d6c2c72574fac354e873c18c42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -204.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213460577086360339, guid: 5a9287d6c2c72574fac354e873c18c42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -215.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a9287d6c2c72574fac354e873c18c42, type: 3}
