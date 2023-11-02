@@ -237,7 +237,7 @@ public class ObjectManager : MonoBehaviour
 
         if(obj_name.Contains("Laser"))
         {
-            if (preview.transform.position.y < FindObjectOfType<PlayerLogic>().transform.position.y + 2)
+            if (preview.transform.position.y < FindObjectOfType<PlayerLogic>().transform.position.y + 1)
                 return false;
 
             if (OverlappingGround())

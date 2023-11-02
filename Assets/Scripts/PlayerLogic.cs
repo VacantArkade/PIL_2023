@@ -83,11 +83,23 @@ public class PlayerLogic : MonoBehaviour
         if(grounded && !prev_grounded)
         {
             animator.SetTrigger("land");
-            dustTrail.Play();
+            //dustTrail.Play();
         }
 
         if (transform.position.y < killLine.position.y)
             Death();
+
+        if(Mathf.Abs(hInput) > 0 && grounded)
+        {
+            if (!dustTrail.isPlaying)
+                dustTrail.Play();
+        }
+
+        else
+        {
+            if(dustTrail.isPlaying)
+                dustTrail.Stop();
+        }
     }
 
     private void LateUpdate()
@@ -132,8 +144,8 @@ public class PlayerLogic : MonoBehaviour
 
         rb.velocity = new Vector2(hInput *  speed, rb.velocity.y) + additional_velocity;
 
-        if (!grounded && dustTrail.isPlaying)
-            dustTrail.Stop();
+        /*if (!grounded && dustTrail.isPlaying)
+            dustTrail.Stop();*/
     }
 
     void Jump_performed(InputAction.CallbackContext ctx)

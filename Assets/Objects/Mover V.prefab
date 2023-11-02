@@ -98,3 +98,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: {x: 0, y: 2}
+  trail: {fileID: 5956287805105822769, guid: b920b2aa20e84da418f0836e4bc85cef, type: 3}

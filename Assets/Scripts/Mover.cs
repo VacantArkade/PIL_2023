@@ -6,6 +6,9 @@ public class Mover : InteractableObject
 {
     bool init = false;
 
+    [SerializeField]
+    GameObject trail;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,9 @@ public class Mover : InteractableObject
             return;
 
         transform.parent.gameObject.GetComponent<InteractableObject>().SetMovementDirection(moveDirection);
+        GameObject g = Instantiate(trail);
+        g.transform.parent = transform.parent;
+        g.transform.position = transform.parent.position;
 
         init = true;
     }
