@@ -333,7 +333,7 @@ public class ObjectManager : MonoBehaviour
             {
                 if (c.name.Contains("Saw"))
                 {
-                    //Debug.Log("Overlapping Saw");
+                    Debug.Log("Overlapping Saw");
                     return c.gameObject;
                 }
             }

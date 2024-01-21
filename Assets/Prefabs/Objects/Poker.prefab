@@ -9752,6 +9752,7 @@ GameObject:
   - component: {fileID: 208502830487204403}
   - component: {fileID: 4292223323654669164}
   - component: {fileID: 7650199267477306191}
+  - component: {fileID: 8284199673204046694}
   m_Layer: 0
   m_Name: Poker
   m_TagString: Untagged
@@ -9860,3 +9861,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -2.08}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &8284199673204046694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065956468479932384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0c507f9057cc346ae04c245893b7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDirection: {x: 0, y: 0}
+  child: {fileID: 0}

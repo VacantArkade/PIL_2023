@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2705063616808836979}
   - component: {fileID: 6426041424422989459}
   - component: {fileID: 9196484994363825508}
+  - component: {fileID: 8667632299200724543}
   m_Layer: 0
   m_Name: Saw Blade
   m_TagString: Untagged
@@ -237,6 +238,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &8667632299200724543
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977497625891286750}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.06
 --- !u!1 &3052389552081262171
 GameObject:
   m_ObjectHideFlags: 0
