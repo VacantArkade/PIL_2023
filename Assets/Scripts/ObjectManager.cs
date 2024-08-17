@@ -318,7 +318,7 @@ public class ObjectManager : MonoBehaviour
         {
             foreach(Collider2D c in colliders)
             {
-                if (c.name.Contains("Ground"))
+                if (c.name.Contains("Ground") || c.name.Contains("Dropper"))
                     return c.gameObject;
             }
         }
