@@ -266,6 +266,8 @@ public class ObjectManager : MonoBehaviour
             var ground = OverlappingGround();
             if (ground == null)
                 ground = OverlappingSaw();
+            if (ground == null)
+                ground = OverlappingBouncer();
 
             if (ground == null)
                 return false;
@@ -279,6 +281,8 @@ public class ObjectManager : MonoBehaviour
             var ground = OverlappingGround();
             if (ground == null)
                 ground = OverlappingSaw();
+            if (ground == null)
+                ground = OverlappingBouncer();
 
             if (ground == null)
                 return false;
@@ -334,6 +338,25 @@ public class ObjectManager : MonoBehaviour
                 if (c.name.Contains("Saw"))
                 {
                     Debug.Log("Overlapping Saw");
+                    return c.gameObject;
+                }
+            }
+        }
+        //Debug.Log("No overlap saw");
+        return null;
+    }
+    GameObject OverlappingBouncer()
+    {
+        var coll = preview.GetComponent<BoxCollider2D>();
+        List<Collider2D> colliders = new List<Collider2D>();
+        ContactFilter2D filter = new ContactFilter2D();
+        if (coll.OverlapCollider(filter, colliders) > 0)
+        {
+            foreach (Collider2D c in colliders)
+            {
+                if (c.name.Contains("Bouncer"))
+                {
+                    Debug.Log("Overlapping Bouncer");
                     return c.gameObject;
                 }
             }

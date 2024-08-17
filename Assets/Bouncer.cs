@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bouncer : MonoBehaviour
 {
+    [SerializeField] Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,13 @@ public class Bouncer : MonoBehaviour
         var player = collision.gameObject.GetComponent<PlayerLogic>();
         if(player != null)
         {
+            
             var direction = (player.transform.position - transform.position);
-            player.ApplyForce(direction.normalized * 20);
+            player.Bounce(direction.normalized * 20);
+            animator.SetTrigger("bounce");
+
+            //Debug.DrawLine(transform.position, transform.position + direction.normalized * 20, Color.magenta);
+            //Debug.Break();
         }
     }
 }

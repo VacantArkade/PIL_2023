@@ -49,7 +49,8 @@ public class PlayerLogic : MonoBehaviour
     {
         normal,
         dead,
-        goal
+        goal,
+        bounce
     }
 
     PlayerStates state = PlayerStates.normal;
@@ -166,6 +167,9 @@ public class PlayerLogic : MonoBehaviour
 
     void Jump_cancelled(InputAction.CallbackContext ctx)
     {
+        if (state == PlayerStates.bounce)
+            return;
+
         if (rb == null)
             return;
 
@@ -215,9 +219,17 @@ public class PlayerLogic : MonoBehaviour
         //gameObject.SetActive(false);
     }
 
-    public void ApplyForce(Vector3 force)
+    public void Bounce(Vector3 force)
     {
+        state = PlayerStates.bounce;
         rb.AddForce(force, ForceMode2D.Impulse);
+        StartCoroutine("StopBounce");
+    }
+
+    IEnumerator StopBounce()
+    {
+        yield return new WaitForSeconds(0.25f);
+        state = PlayerStates.normal;
     }
 
     IEnumerator HandleDeathAnimations()
