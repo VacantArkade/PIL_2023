@@ -206,7 +206,21 @@ public class ObjectManager : MonoBehaviour
             return true;
         }
 
-        if(obj_name.Contains("Saw"))
+        if (obj_name.Contains("Bouncer"))
+        {
+            if (OverlappingGround())
+                return false;
+            return true;
+        }
+
+        if (obj_name.Contains("Dropper"))
+        {
+            if (OverlappingGround())
+                return false;
+            return true;
+        }
+
+        if (obj_name.Contains("Saw"))
         {
             
 
@@ -318,7 +332,7 @@ public class ObjectManager : MonoBehaviour
         {
             foreach(Collider2D c in colliders)
             {
-                if (c.name.Contains("Ground") || c.name.Contains("Dropper"))
+                if (c.name.Contains("Ground") || c.name.Contains("Dropper") || c.name.Contains("Bouncer"))
                     return c.gameObject;
             }
         }

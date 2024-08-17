@@ -8,7 +8,13 @@ public class Laser : InteractableObject
     LineRenderer line;
 
     [SerializeField]
+    LineRenderer reflectLine;
+
+    [SerializeField]
     LayerMask mask;
+
+    [SerializeField]
+    LayerMask reflectMask;
 
     [SerializeField]
     GameObject particles;
@@ -24,6 +30,9 @@ public class Laser : InteractableObject
 
     [SerializeField]
     AudioSource laserAudio;
+
+    bool hittingSaw = false;
+    float sawElapsed = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +64,14 @@ public class Laser : InteractableObject
             {
                 Debug.Log("Hit Saw");
                 // spawn laser reflection
+                hittingSaw = true;
+                
+            }
+
+            else
+            {
+                hittingSaw = false;
+                
             }
 
             laserAudio.transform.position = endPoint;
@@ -68,10 +85,45 @@ public class Laser : InteractableObject
         //line.SetPosition(1, endPoint);
 
         Draw(endPoint);
-
-        
-
         particles.transform.position = endPoint;
+
+        if(hittingSaw)
+        {
+            sawElapsed += Time.deltaTime;
+            if(sawElapsed > 0.1f)
+            {
+                var randomDir = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+
+                RaycastHit2D reflectHit = Physics2D.Raycast(endPoint, randomDir, 100, reflectMask);
+
+                //var endPoint = line.transform.position + line.transform.up * -100;
+
+                Vector3 reflectEnd = endPoint + (randomDir * 100);
+
+                if (reflectHit)
+                {
+                    Debug.Log("reflection hit " + reflectHit.transform.name);
+                    var player = reflectHit.transform.gameObject.GetComponent<PlayerLogic>();
+                    if (player != null)
+                    {
+                        Debug.Log("HIT PLAYER");
+                        player.DeathByLaser();
+                    }
+
+                    reflectEnd = reflectHit.point;
+                }
+
+                reflectLine.SetPosition(0, endPoint);
+                reflectLine.SetPosition(1, reflectEnd);
+                sawElapsed = 0;
+            }
+        }
+
+        else
+        {
+            reflectLine.SetPosition(0, endPoint);
+            reflectLine.SetPosition(1, endPoint);
+        }
         
     }
 
