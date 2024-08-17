@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6426041424422989459}
   - component: {fileID: 9196484994363825508}
   - component: {fileID: 8667632299200724543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Saw Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 7629320290753724671}
   - component: {fileID: 4051946205052282568}
   - component: {fileID: 1620812422538722247}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5077,7 +5077,7 @@ GameObject:
   - component: {fileID: 5980491419501249346}
   - component: {fileID: 1805302492453355368}
   - component: {fileID: 3107030951592667168}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Saw Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -215,6 +215,11 @@ public class PlayerLogic : MonoBehaviour
         //gameObject.SetActive(false);
     }
 
+    public void ApplyForce(Vector3 force)
+    {
+        rb.AddForce(force, ForceMode2D.Impulse);
+    }
+
     IEnumerator HandleDeathAnimations()
     {
         state = PlayerStates.dead;

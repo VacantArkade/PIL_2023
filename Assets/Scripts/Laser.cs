@@ -50,6 +50,13 @@ public class Laser : InteractableObject
                 player.DeathByLaser();
             }
 
+            var saw = hit.transform.gameObject.GetComponent<SawBlade>();
+            if(saw != null)
+            {
+                Debug.Log("Hit Saw");
+                // spawn laser reflection
+            }
+
             laserAudio.transform.position = endPoint;
         }
 

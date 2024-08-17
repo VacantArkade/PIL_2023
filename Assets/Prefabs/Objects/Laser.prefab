@@ -5175,7 +5175,7 @@ MonoBehaviour:
   line: {fileID: 6162435155350565146}
   mask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
   particles: {fileID: 245639848412575111}
   points: 7
   amplitude: 0.5
