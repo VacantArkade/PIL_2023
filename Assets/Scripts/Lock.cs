@@ -43,7 +43,8 @@ public class Lock : MonoBehaviour
         {
             //gameObject.SetActive(false);
             //GameManager.instance.NextLevel();
-            StartCoroutine(GameManager.instance.NextLevel());
+            //StartCoroutine(GameManager.instance.NextLevel());
+            GameManager.instance.StartNextLevelCoroutine();
         }
 
     }

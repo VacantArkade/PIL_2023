@@ -81,6 +81,8 @@ public class ObjectManager : MonoBehaviour
 
         spawnAction = _actionMap.FindAction("Spawn Item");
         spawnAction.performed += AttemptSpawnItem;
+
+        UpdatePreview();
     }
 
     // Update is called once per frame
