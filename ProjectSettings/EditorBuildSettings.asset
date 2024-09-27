@@ -9,42 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/title.unity
     guid: 1cbaace25eae32645b501c18d0eef072
   - enabled: 1
-    path: Assets/Scenes/1-1.unity
-    guid: 461340607b5089a4b92ae0c51ff196ed
-  - enabled: 1
-    path: Assets/Scenes/1-2.unity
-    guid: 4d0b2c669b6e234478c19cfaed55cf89
-  - enabled: 1
-    path: Assets/Scenes/1-3.unity
-    guid: a97b93ddf3548c24bb18da3ac4903fc7
-  - enabled: 1
-    path: Assets/Scenes/2-1.unity
-    guid: 0ec82be45df1c864fbde54d22a655815
-  - enabled: 1
-    path: Assets/Scenes/2-2.unity
-    guid: 17e7e5c33ffcd964a9e0718416ded15f
-  - enabled: 1
-    path: Assets/Scenes/2-3.unity
-    guid: 9500f70a38369a5449f949d721ebb17b
-  - enabled: 1
-    path: Assets/Scenes/3-1.unity
-    guid: af13a747a77781445b429f2d76979b3f
-  - enabled: 1
-    path: Assets/Scenes/3-2.unity
-    guid: 9f71eafc4e2295e48afe1fa6958307cc
-  - enabled: 1
-    path: Assets/Scenes/4-1.unity
-    guid: 32d16ff4c03006d49859e086e2c830ff
-  - enabled: 1
-    path: Assets/Scenes/4-2.unity
-    guid: 55e3c364d7bc06e40aa165351e2bc220
+    path: Assets/Scenes/DO NOT ENTER/level select.unity
+    guid: c85148136989f9d4c87aaa5f90153ae9
   - enabled: 1
     path: Assets/My Levels/5-1.unity
     guid: 74d0b563372e52542a26a2ad10c48ff5
   - enabled: 1
-    path: Assets/My Levels/my cool level.unity
-    guid: 6677783f6e540f04bbb4a16c5e5ec9dc
-  - enabled: 1
-    path: Assets/My Levels/dffdsfassad.unity
-    guid: f9fab53dd9a361243a4946056e7cc760
+    path: Assets/My Levels/5-2.unity
+    guid: faaa504a6fba91d47b54666b46445ea1
   m_configObjects: {}

@@ -45,6 +45,7 @@ public class Lock : MonoBehaviour
             //GameManager.instance.NextLevel();
             //StartCoroutine(GameManager.instance.NextLevel());
             GameManager.instance.StartNextLevelCoroutine();
+            StaticPlayerInput.input.Disable();
         }
 
     }
