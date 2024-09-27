@@ -26,13 +26,6 @@ public class ObjectManager : MonoBehaviour
     public int objectIndex = 0;
 
     [SerializeField]
-    InputActionAsset controls;
-    InputActionMap _actionMap;
-
-    InputAction scrollAction;
-    InputAction spawnAction;
-
-    [SerializeField]
     LayerMask groundMask;
 
     Transform nextParent;
@@ -73,14 +66,10 @@ public class ObjectManager : MonoBehaviour
 
         UpdateCount();
 
+        StaticPlayerInput.input.Player.SwitchItem.performed += Scroll;
+        StaticPlayerInput.input.Player.SpawnItem.performed += AttemptSpawnItem;
 
-        _actionMap = controls.FindActionMap("Player");
-
-        scrollAction = _actionMap.FindAction("Switch Item");
-        scrollAction.performed += Scroll;
-
-        spawnAction = _actionMap.FindAction("Spawn Item");
-        spawnAction.performed += AttemptSpawnItem;
+        UpdatePreview();
     }
 
     // Update is called once per frame
@@ -96,8 +85,6 @@ public class ObjectManager : MonoBehaviour
     }
     private void OnDisable()
     {
-        scrollAction.performed -= Scroll;
-        spawnAction.performed -= AttemptSpawnItem;
     }
 
     public Sprite GetCurrentObjectSprite()

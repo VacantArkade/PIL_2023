@@ -21,7 +21,19 @@ public class Dropper : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var player = collision.gameObject.GetComponent<PlayerLogic>();
-        if (player != null)
+
+        if (player == null)
+            return;
+
+        var lineToPlayer = (player.transform.position - transform.position).normalized;
+
+        var up = Vector3.up;
+
+        var dot = Vector3.Dot(up, lineToPlayer);
+
+        Debug.Log("dot = " + dot);
+
+        if (player != null && dot > 0.25f)
         {
 
             animator.SetTrigger("shake");
@@ -37,6 +49,7 @@ public class Dropper : MonoBehaviour
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         GetComponent<Rigidbody2D>().gravityScale = 15;
         GetComponent<Rigidbody2D>().freezeRotation = true;
+        gameObject.layer = LayerMask.NameToLayer("FallingBlock");
         /*var currentVel = GetComponent<Rigidbody2D>().velocity;
         currentVel += Vector2.down * 10;
         GetComponent<Rigidbody2D>().velocity = currentVel;*/

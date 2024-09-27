@@ -22,12 +22,13 @@ public class PlayerLogic : MonoBehaviour
     Animator shaker;
 
     Rigidbody2D rb;
-    [SerializeField]
+
+    /*[SerializeField]
     InputActionAsset controls;
     InputActionMap _actionMap;
 
     InputAction jumpAction;
-    InputAction moveAction;
+    InputAction moveAction;*/
 
     float hInput = 0;
 
@@ -60,21 +61,20 @@ public class PlayerLogic : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        _actionMap = controls.FindActionMap("Player");
+        //input = new Ia_Player();
 
-        jumpAction = _actionMap.FindAction("Jump");
-        jumpAction.performed += Jump_performed;
-        jumpAction.canceled += Jump_cancelled;
-        jumpAction.started += Jump_started;
+        StaticPlayerInput.input.Player.Jump.performed += Jump_performed;
+        StaticPlayerInput.input.Player.Jump.started += Jump_started;
+        StaticPlayerInput.input.Player.Jump.canceled += Jump_cancelled;
 
-        moveAction = _actionMap.FindAction("Horizontal Movement");
-        moveAction.performed += Move;
-        moveAction.canceled += Move;
+        StaticPlayerInput.input.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
+        hInput = StaticPlayerInput.input.Player.HorizontalMovement.ReadValue<float>();
+
         if (state == PlayerStates.normal)
         {
             animator.SetBool("grounded", grounded);
@@ -110,12 +110,7 @@ public class PlayerLogic : MonoBehaviour
 
     private void OnDisable()
     {
-        jumpAction.performed -= Jump_performed;
-        jumpAction.canceled -= Jump_cancelled;
-        jumpAction.started -= Jump_started;
-
-        moveAction.performed -= Move;
-        moveAction.canceled -= Move;
+        StaticPlayerInput.input.Disable();
     }
 
     private void FixedUpdate()
@@ -184,13 +179,6 @@ public class PlayerLogic : MonoBehaviour
 
     }
 
-    private void Move(InputAction.CallbackContext ctx)
-    {
-        var amount = ctx.ReadValue<float>();
-        hInput = amount;
-        Debug.Log(amount);
-    }
-
     public void DeathByLaser()
     {
         Death();
@@ -211,12 +199,7 @@ public class PlayerLogic : MonoBehaviour
         if (state == PlayerStates.dead)
             return;
 
-
-
         StartCoroutine(HandleDeathAnimations());
-
-        
-        //gameObject.SetActive(false);
     }
 
     public void Bounce(Vector3 force)
