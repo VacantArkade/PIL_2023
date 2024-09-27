@@ -41,4 +41,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/My Levels/5-1.unity
     guid: 74d0b563372e52542a26a2ad10c48ff5
+  - enabled: 1
+    path: Assets/My Levels/my cool level.unity
+    guid: 6677783f6e540f04bbb4a16c5e5ec9dc
+  - enabled: 1
+    path: Assets/My Levels/dffdsfassad.unity
+    guid: f9fab53dd9a361243a4946056e7cc760
   m_configObjects: {}

@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     public void BackToMenu()
     {
-
+        SceneManager.LoadScene(0);
     }
 
     public void StartNextLevelCoroutine()
@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
 
     public void SetAudio(float sfx, float bgm)
     {
-        Debug.Log("SETTING AUDIO");
+        //Debug.Log("SETTING AUDIO");
         mixer.SetFloat("SFX", /*Mathf.Log10(sfx) * 20*/ (- 60 + sfx * 80)); // -80 + (sfx * 80)
         mixer.SetFloat("BGM", (-60 + bgm * 80));
     }

@@ -31,7 +31,7 @@ public class Dropper : MonoBehaviour
 
         var dot = Vector3.Dot(up, lineToPlayer);
 
-        Debug.Log("dot = " + dot);
+        //Debug.Log("dot = " + dot);
 
         if (player != null && dot > 0.25f)
         {
