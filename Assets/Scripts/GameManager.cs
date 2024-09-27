@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void StartNextLevelCoroutine()
+    {
+        StartCoroutine("NextLevel");
+    }
+
     public void PrepNextLevel()
     {
         int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
@@ -67,7 +72,18 @@ public class GameManager : MonoBehaviour
     {
         int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
         int nextLevelIndex = currentLevelIndex + 1;
-        var scene = SceneManager.LoadSceneAsync(nextLevelIndex);
+
+        AsyncOperation scene;
+
+        if (nextLevelIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            scene = SceneManager.LoadSceneAsync(0);
+        }
+        else
+        {
+            scene = SceneManager.LoadSceneAsync(nextLevelIndex);
+        }
+
         scene.allowSceneActivation = false;
 
         var fade = FindObjectOfType<FadeCanvas>();
@@ -105,7 +121,16 @@ public class GameManager : MonoBehaviour
     {
         int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
         int nextLevelIndex = currentLevelIndex + 1;
-        SceneManager.LoadScene(nextLevelIndex);
+
+        if(nextLevelIndex > SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(nextLevelIndex);
+        }
+        
     }
 
     public void LoadCurrentSettings()
