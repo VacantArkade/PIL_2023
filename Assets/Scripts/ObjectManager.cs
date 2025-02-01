@@ -315,7 +315,7 @@ public class ObjectManager : MonoBehaviour
         var coll = preview.GetComponent<BoxCollider2D>();
         List<Collider2D> colliders = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
-        if(coll.OverlapCollider(filter, colliders) > 0)
+        if(coll.Overlap(filter, colliders) > 0)
         {
             foreach(Collider2D c in colliders)
             {
@@ -332,7 +332,7 @@ public class ObjectManager : MonoBehaviour
         var coll = preview.GetComponent<BoxCollider2D>();
         List<Collider2D> colliders = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
-        if (coll.OverlapCollider(filter, colliders) > 0)
+        if (coll.Overlap(filter, colliders) > 0)
         {
             foreach (Collider2D c in colliders)
             {
@@ -351,7 +351,7 @@ public class ObjectManager : MonoBehaviour
         var coll = preview.GetComponent<BoxCollider2D>();
         List<Collider2D> colliders = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
-        if (coll.OverlapCollider(filter, colliders) > 0)
+        if (coll.Overlap(filter, colliders) > 0)
         {
             foreach (Collider2D c in colliders)
             {
@@ -371,7 +371,7 @@ public class ObjectManager : MonoBehaviour
         var coll = preview.GetComponent<BoxCollider2D>();
         List<Collider2D> colliders = new List<Collider2D>();
         ContactFilter2D filter = new ContactFilter2D();
-        if (coll.OverlapCollider(filter, colliders) > 0)
+        if (coll.Overlap(filter, colliders) > 0)
         {
             foreach (Collider2D c in colliders)
             {

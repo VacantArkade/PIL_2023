@@ -78,7 +78,7 @@ public class PlayerLogic : MonoBehaviour
         if (state == PlayerStates.normal)
         {
             animator.SetBool("grounded", grounded);
-            animator.SetFloat("speed", rb.velocity.x * Mathf.Abs(hInput));
+            animator.SetFloat("speed", rb.linearVelocity.x * Mathf.Abs(hInput));
         }
 
         if(grounded && !prev_grounded)
@@ -133,12 +133,12 @@ public class PlayerLogic : MonoBehaviour
 
             if(other_rb != null)
             {
-                additional_velocity = other_rb.velocity;
+                additional_velocity = other_rb.linearVelocity;
                 additional_velocity.y = 0;
             }
         }
 
-        rb.velocity = new Vector2(hInput *  speed, rb.velocity.y) + additional_velocity;
+        rb.linearVelocity = new Vector2(hInput *  speed, rb.linearVelocity.y) + additional_velocity;
 
         /*if (!grounded && dustTrail.isPlaying)
             dustTrail.Stop();*/
@@ -156,7 +156,7 @@ public class PlayerLogic : MonoBehaviour
         Destroy(sound, 1.5f);
 
         //rb.AddForce(Vector2.up * jumpForce);
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         animator.SetTrigger("jump");
     }
 
@@ -168,10 +168,10 @@ public class PlayerLogic : MonoBehaviour
         if (rb == null)
             return;
 
-        if (rb.velocity.y <= 0)
+        if (rb.linearVelocity.y <= 0)
             return;
 
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 
     void Jump_started(InputAction.CallbackContext ctx)
@@ -219,8 +219,8 @@ public class PlayerLogic : MonoBehaviour
     {
         state = PlayerStates.dead;
         shaker.SetTrigger("shake");
-        var vel = rb.velocity;
-        rb.velocity = Vector2.zero;
+        var vel = rb.linearVelocity;
+        rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0;
 
         yield return new WaitForSeconds(0.2f);
@@ -232,7 +232,7 @@ public class PlayerLogic : MonoBehaviour
         var g = Instantiate(playerPieces, transform.position, Quaternion.identity);
 
         foreach (Rigidbody2D r2d in g.GetComponentsInChildren<Rigidbody2D>())
-            r2d.velocity = -1 * vel;
+            r2d.linearVelocity = -1 * vel;
 
         
         gameObject.SetActive(false);

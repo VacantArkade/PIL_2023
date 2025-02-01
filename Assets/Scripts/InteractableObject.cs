@@ -23,7 +23,7 @@ public class InteractableObject : MonoBehaviour
         flipTimer += Time.deltaTime;
 
         if (rb != null)
-            rb.velocity = moveDirection;
+            rb.linearVelocity = moveDirection;
 
         if (rotSpeed != 0)
             transform.Rotate(Vector3.forward, rotSpeed * Time.deltaTime);
